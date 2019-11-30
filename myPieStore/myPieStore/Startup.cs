@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using myPieStore.Models;
 
 namespace myPieStore
 {
@@ -20,6 +21,10 @@ namespace myPieStore
             services.AddControllersWithViews();
             //or
             //services.AddMvc();
+
+            //Added our own services to service collection(interfacea and service)
+            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            services.AddScoped<IPieRepository, MockPieRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
